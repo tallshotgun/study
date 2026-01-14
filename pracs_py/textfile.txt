@@ -1,0 +1,6 @@
+this is a file
+this is the second line
+hello world
+this is an even line
+this is an odd line
+another even line

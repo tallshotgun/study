@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Event Driven JS Programs</title>
+</head>
+<body>
+
+  <!-- 1. Multiplication Table -->
+  <h3>Multiplication Table</h3>
+  Enter number: <input id="num1" type="number">
+  <button onclick="printTable()">Print Table</button>
+  <div id="tableResult"></div>
+
+  <!-- 2. Largest of Three Numbers -->
+  <h3>Largest of Three Numbers</h3>
+  Num1: <input id="big1" type="number">
+  Num2: <input id="big2" type="number">
+  Num3: <input id="big3" type="number">
+  <button onclick="findLargest()">Find Largest</button>
+  <div id="largestResult"></div>
+
+  <!-- 3. Factorial -->
+  <h3>Factorial</h3>
+  Enter number: <input id="factNum" type="number">
+  <button onclick="findFactorial()">Find Factorial</button>
+  <div id="factResult"></div>
+
+  <!-- 4. Sum and Average -->
+  <h3>Sum and Average</h3>
+  Enter positive number: <input id="numInput" type="number" min="0">
+  <button onclick="addNumber()">Add Number</button>
+  <button onclick="calculate()">Calculate Sum & Average</button>
+  <div id="sumAvgResult"></div>
+
+  <script>
+    function printTable() {
+      let n = Number(document.getElementById('num1').value);
+      let output = '';
+      if (isNaN(n)) {
+        output = 'Enter valid number';
+      } else {
+        for (let i = 1; i <= 10; i++) {
+          output += n + ' x ' + i + ' = ' + (n * i) + '<br>';
+        }
+      }
+      document.getElementById('tableResult').innerHTML = output;
+    }
+
+    function findLargest() {
+      let a = Number(document.getElementById('big1').value);
+      let b = Number(document.getElementById('big2').value);
+      let c = Number(document.getElementById('big3').value);
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        document.getElementById('largestResult').innerText = 'Enter all three numbers';
+        return;
+      }
+      let max = a;
+      if (b > max) max = b;
+      if (c > max) max = c;
+      document.getElementById('largestResult').innerText = 'Largest is ' + max;
+    }
+
+    function findFactorial() {
+      let n = Number(document.getElementById('factNum').value);
+      if (isNaN(n) || n < 0 || !Number.isInteger(n)) {
+        document.getElementById('factResult').innerText = 'Enter a non-negative integer';
+        return;
+      }
+      let fact = 1;
+      for (let i = 2; i <= n; i++) {
+        fact *= i;
+      }
+      document.getElementById('factResult').innerText = 'Factorial is ' + fact;
+    }
+
+    let numbers = [];
+
+    function addNumber() {
+      let val = Number(document.getElementById('numInput').value);
+      if (isNaN(val) || val < 0) {
+        alert('Enter a positive number');
+        return;
+      }
+      if (val === 0) {
+        alert('0 is used to stop input');
+        return;
+      }
+      numbers.push(val);
+      document.getElementById('numInput').value = '';
+    }
+
+    function calculate() {
+      if (numbers.length === 0) {
+        document.getElementById('sumAvgResult').innerText = 'No numbers entered';
+        return;
+      }
+      let sum = 0;
+      for (let n of numbers) sum += n;
+      let avg = sum / numbers.length;
+      document.getElementById('sumAvgResult').innerText = 'Sum: ' + sum + ', Average: ' + avg.toFixed(2);
+      numbers = [];
+    }
+  </script>
+
+</body>
+</html>

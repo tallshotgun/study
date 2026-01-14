@@ -1,0 +1,12 @@
+assignment 1: what is idle?
+assignment 2: give a chart for demonstrating precendence of various operators used in python.
+assignment 3: input 2 numbers and perform 5 mathematical operations on them.
+assignment 4: 
+assignment 5:  What is the difference between list and tuple?
+assignment 6: create 3 list
+		1. store name of five employees 
+		2. store age of 5 employees 
+		3. salary of 5 employees 
+	      print
+assignment 7: Write a program to input a list from the user and calculate the total of values in the list and then its average
+

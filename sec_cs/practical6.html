@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Department of Computer Science</title>
+    <style>
+        /* Basic reset */
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* Navigation styles */
+        nav {
+            background-color: rgb(31, 100, 146);
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            background-color: rgb(36, 66, 235);
+        }
+        /* Dropdown menu */
+        nav ul li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #396592;
+            display: none;
+            min-width: 160px;
+            z-index: 1000;
+            flex-direction: column;
+        }
+        nav ul li:hover > ul {
+            display: flex;
+        }
+        nav ul li ul li a {
+            padding: 12px 20px;
+            border-top: 1px solid #2d6297;
+        }
+        nav ul li ul li a:hover {
+            background-color: #3c8cdd;
+        }
+        /* Page content */
+        .content {
+            padding: 20px;
+        }
+        h1 {
+            color: #0d131a;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Department of Computer Science</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Faculty </a>
+                <ul>
+                    <li><a href="#">Dr. Asha</a></li>
+                    <li><a href="#">Dr. Arti Dua</a></li>
+                    <li><a href="#">Dr. Bhavya Deep</a></li>
+                    <li><a href="#">Mr. Parveen Kumar</a></li>
+                    <li><a href="#">Dr. Jayant Sharma</a></li>
+                    <li><a href="#">Ms. Manu Kataria</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Courses </a>
+                <ul>
+                    <li><a href="#">OOPs using python</a></li>
+                    <li><a href="#">Mathematics for computing</a></li>
+                    <li><a href="#">Computer System Architecture</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Activities </a>
+                <ul>
+                    <li><a href="#">Workshops</a></li>
+                    <li><a href="#">Seminars</a></li>
+                    <li><a href="#">Competitions</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <p>Welcome to the Department of Computer Science. Use the navigation menu above to explore faculty members, courses offered, and department activities.</p>
+    </div>
+</body>
+</html>
