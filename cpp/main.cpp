@@ -14,7 +14,7 @@ int main()
         {
             cout << " ";
         }
-        for (int b(0);b<i;--b)
+        for (int b = 0; b < i; ++b)
         {
             cout << "*";
         }
