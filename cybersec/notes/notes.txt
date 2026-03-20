@@ -83,3 +83,34 @@ cat file.txt										: print content of file
 openssl genrsa > privatekey.pem 							: generate private key
 openssl rsa -in privatekey.pem -pubout -out publickey.key 				: create public key from private key
 openssl pkeyutl -encrypt -inkey publickey.key -pubin -in file.txt -out encrypted.txt 	: encrypt file using public key 
+
+Network Security - Protecting data during transmission and preventing unauthorized access to systems via network channels
+. Protect data in transit
+. Secures internal and external networks
+. Combat attacks like sniffing and spoofing
+
+TCP/IP      **
+
+Network attacks
+. Packet sniffing : Intercepting unencrypted traffic
+. IP spoofing : Pretending to be another device     **
+. Man-in-the-middle : Intercepting and altering communication
+. DNS poisoning : Redirecting users to fake sites
+
+Firewall    **
+
+nmap commands
+. nmap ip/domain
+. nmap ip-254
+. nmap ip/24
+. nmap ip/domain ip/domain ip/domain
+. nmap -p port,port, ip/domain/range
+. nmap -f ip/domain    (fast scan- first hundred ports)
+. nmap -p 1-255 ip/domain
+. nmap -Sn ip/domain
+. nmap -A ip/domain (aggressive scan)
+. nmap -v ip/domain
+. nmap -sV ip/domain
+. nmap -O ip/domain
+man nmap
+nmap -help
