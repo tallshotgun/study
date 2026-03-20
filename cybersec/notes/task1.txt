@@ -1,0 +1,34 @@
+. Research and summarize 3 types of malware
+. Use python to hash a custon string using hashlib
+. Submit both findings in a 1-page report
+
+Report :
+
+Three types of malware
+
+. Adware : Unwanted software secretly installs itself on the device and is designed to throw advertisements up on your screen, most often within a web browser.
+	   Typically it disguises itself as legitimate software or piggyback on another program to trick you into installing it on your PC.
+	   Shows unwanted pop-ups and ads on your screen and clicking the "close" button never works only more ads pop-up. 
+. Spyware : Secretly observes the computer user's activities without permission and reports it to the software's author.
+	    Gathers information about you, sites you visit, things you download, your usernames and passwords, payment information and emails.
+	    Exploit : Security vulnerability in your device's hardware or software that can be exploited to gain unauthorized access. These are unintentional byproduct of hardware and software manufacturing.
+	    Backdoors : Put in place on purpose as a way to quickly gain access to your system. Sometimes hardware and software manufacturers themselves put in backdoors.
+	    Cybercriminals usually use an exploit to gain initial access to your system then install a permanent backdoor for future access.
+	    Phishing and spoofing are more ways where you can get a spyware from.
+	    Spyware authours present their spyware programs as useful tools to download. Such as drive cleaner, new download manager or other bait tools. Even after uninstallation of these tools the spyware remains behind and continues to function.
+	Types:
+	    Keyloggers, Password stealers, infostealers
+. Virus : Attaches to another program and when executed, it replicates itself by modifying other computer programs and infecting the with its own bits of code.
+	  Can destroy data, slow down system resources and log keystrokes
+	  
+
+
+Hash using python
+
+
+import hashlib
+
+string = "This is a highly classified message"
+hashed = hashlib.sha256(string.encode()).hexdigest()
+
+print(hashed)

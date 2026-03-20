@@ -1,0 +1,85 @@
+CYBERSECURITY
+
+Protection of systems, networks and data from digital attacks.
+. Safeguard sensitive data
+. Prevent unauthorized access
+. Mitigate cyberattacks - reduce system compromise risks
+
+3 Core Pillars : CIA
+. Confidentiality
+. Integrity
+. Availability
+
+* WannaCry Ransomware :- SMB exploit : Windows 7 : Eternal blue vulnerability
+* Bitcoin/ Cryptocurrency :- Untraceable
+
+Cybersec domains : Network security, application security, information security, disaster recovery
+
+Types of hackers
+. White hackers : Hack with permission to find vulnerabilities and foresee attack risks
+. Black hackers : Unauthorized access to data and threaten to sell to competitors in exchange for money or some other thing
+. Grey hackers : Find vulnerabilities in system (w/o permission) and report it to company (bug bounty) to recieve some compensation. May or may not harm the system.
+. Hacktivist : Hack in order to promote a political or social agenda
+
+RISK = Threat X Vulnerability X Impact
+. Threat : Potential attacker
+. Vulnerability : Weakness in the system
+. Exploit : Method of attacking a vulnerability
+
+Security principles
+. Layered Security
+. Authentication : User identity verification
+. Authorization : Control user access rights
+. Monitoring & Logging : Track security activities
+. Physical Security : Prevent hardware tampering
+
+Cryptography
+. Securing information through encoding techniques to ensure only authorized parties can access it.
+
+Symmetric encryption
+. Unencrypted plaintext message ---> Encryption key ---> Encrypted ciphertext ---> Decryption key ---> Decrypted plaintext message
+. Same key is used for both encryption and decryption
+. Key + Cipherdata both are shared on the internet : Makes it vulnerable to key interception
+. AES/DES algorithm used.
+
+Asymmetric encryption
+. Two keys used : One public and one private
+. Encryption is done by sender using their private key and then public key of sender is used by receiver to decrypt after recieving
+. Public key is generated/derived from the private key 
+. Public key is shared between client and server
+. More secure but slower than symmetric encryption
+
+Hash function : Produce a fixed-length string from data to ensure integrity
+. One-way and irreversible and it is case sensitive
+. It is used to store passwords and in blockchains : when password is entered during login, it is converted to hash and checked against database to see if it is same.
+* HASHCAT
+
+Salting : Adds random 16 bit 'salt' to the hash to prevent hash decoding.
+. There are databases which contain hashes of common passwords. Adding salt to hash randomizes it so that it cannot be decoded from these databases.
+
+Digital signature : Verify message authenticity and integrity ensuring it wasn't tampered with
+. Created using sender's private key
+. Verified with sender's public key
+
+Certificates and Public Key Infrastructure (PKI)
+. PKI enables secure communication over the internet using certificate authorities
+. Digital certificates link identity to public keys
+. Used in SSL/TLS
+
+Common cryptography tools
+. OpenSSL for secure communications
+. GPG for file and email enryption
+. Hashcat for passwordd security testing
+. VeraCrypt for disk encryption
+
+OpenSSL and Linux commands:
+ls -alh 										: list all files including hidden and "h" used to properly show space used by file
+echo / touch 										: create file
+
+echo "text" > file.txt
+touch file
+cat file.txt										: print content of file
+
+openssl genrsa > privatekey.pem 							: generate private key
+openssl rsa -in privatekey.pem -pubout -out publickey.key 				: create public key from private key
+openssl pkeyutl -encrypt -inkey publickey.key -pubin -in file.txt -out encrypted.txt 	: encrypt file using public key 
