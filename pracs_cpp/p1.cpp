@@ -6,7 +6,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     int n;
-    double sum;
+    double sum = 0.0;
     if (argc>=2)
     {
         n = stoi(argv[1]);

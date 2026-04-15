@@ -1,10 +1,10 @@
 #include <iostream>
-
+#include <cstring>
 using namespace std;
 
-int main(int argc, char* argv[])
+int main()
 {
+	int max_lenght,i;
+	string input_line;
 	
-
-	return 0;
 }
