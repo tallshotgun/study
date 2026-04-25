@@ -1,14 +1,16 @@
 #include <iostream>
 #include <fstream>
+using namespace std;
 
-int main() {
-    std::ifstream inputFile("input.txt");
-
-    std::ofstream outputFile("output.txt");
-
+int main() 
+{
+    ifstream inputFile("input.txt");
+    ofstream outputFile("output.txt");
+    
     char ch;
 
-    while (inputFile >> ch) {
+    while (inputFile >> ch) 
+    {
         outputFile << ch;
     }
 
