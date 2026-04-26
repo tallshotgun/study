@@ -49,22 +49,3 @@ int main() {
 
     return 0;
 }
-
-/*
-[tsglmao@arch pracs_dms]$ ./p7
-Enter the number of vertices: 4
-Enter the number of edges: 4
-Enter edges (source to destination):
-0 1
-0 2
-1 2
-2 0
-
-Vertex  In-Degree  Out-Degree
-------------------------------------
-0       1          2
-1       1          1
-2       2          1
-3       0          0
-[tsglmao@arch pracs_dms]$ 
-*/

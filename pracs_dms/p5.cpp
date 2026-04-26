@@ -38,19 +38,3 @@ int main() {
 
     return 0;
 }
-
-/*
-[tsglmao@arch pracs_dms]$ ./p5
-Enter the degree of the polynomial: 2
-Enter 3 coefficients starting from n^2 down to the constant term:
-Coefficient for n^2: 4
-Coefficient for n^1: 2
-Coefficient for n^0: 9
-
-Enter the value of n to evaluate: 5
-
------------------------------------
-Result: f(5) = 119
------------------------------------
-[tsglmao@arch pracs_dms]$ 
-*/

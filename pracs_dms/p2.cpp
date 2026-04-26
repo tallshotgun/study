@@ -153,38 +153,3 @@ int main() {
 
     return 0;
 }
-
-/*
-[tsglmao@arch pracs_dms]$ ./p2
-How many elements in the set? 5
-Enter the 5 elements of the set (separated by space):
-1 2 3 4 5
-
-How many related pairs do you want to add? 5
-Enter pair 1 (element1 element2): 1 1
-Enter pair 2 (element1 element2): 2 2
-Enter pair 3 (element1 element2): 3 3
-Enter pair 4 (element1 element2): 4 4
-Enter pair 5 (element1 element2): 5 5
-
---- Relation Matrix ---
-         1     2     3     4     5
-   1     1     0     0     0     0
-   2     0     1     0     0     0
-   3     0     0     1     0     0
-   4     0     0     0     1     0
-   5     0     0     0     0     1
-
-Relation R = { (1,1), (2,2), (3,3), (4,4), (5,5) }
-
---- Properties ---
-- Reflexive: Yes
-- Symmetric: Yes
-- Anti-symmetric: Yes
-- Transitive: Yes
-
---- Conclusion ---
-The relation is an Equivalence Relation.
-
-[tsglmao@arch pracs_dms]$ 
-*/

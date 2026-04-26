@@ -42,23 +42,3 @@ int main() {
 
     return 0;
 }
-
-/*
-[tsglmao@arch pracs_dms]$ ./p6
-Enter the number of vertices: 3
-Enter the adjacency matrix (3x3):
-0 1 1
-1 0 1
-1 1 0
-
-The given graph is a COMPLETE graph.
-[tsglmao@arch pracs_dms]$ ./p6
-Enter the number of vertices: 3
-Enter the adjacency matrix (3x3):
-0 1 0
-1 0 1
-0 1 0
-
-The given graph is NOT a complete graph.
-[tsglmao@arch pracs_dms]$ 
-*/
