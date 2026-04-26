@@ -1,0 +1,38 @@
+...
+...
+...
+
+
+Function Overloading : If multiple functions have same name then they should have atleast on parameter with a different type from each other or number of parameters should be different.
+	Then during function call that function will be called which has matching argument types with the function definition.
+	- Function cannot be overloaded by its return type.
+	- Two functions with same name are generally expected to have atleast a SIMILAR behaviour/functionality.
+
+Function Templates : When multiple functions need to be of same name and have same function definition, then we can define functions with "generic types" for parameters, which are known as TEMPLATES.
+	- Function definition is same except that it is preceded by the keyword template and series of template parameters in angle-brackets < >.
+  Syntax
+	template <typename genericType1, typename genericType2>		//typename or class both keywords can be used. can have multiple template parameters
+	genericType identifier (genereicType a, genericType b)		//instead of genericType, non-templated types can also be used
+	{
+		//a and b will have the type which is passed during function call
+		genericType var1;	//generic type also used to declare a local variable
+	}
+  Calling
+	call = identifier <fundamental/compound data type> (value1/var1, value2/var2);
+	// if the type is unambiguous, function can be called without specifying type in < > and the compiler can deduce it automatically.
+	
+	- Template parameters can also be used as regular function paramerters(like variables inside the function) if/when an expression is specified in the < > when calling.
+	template <typename T, int num> T func(T val){return 2 + num};	//parameter num is used as variable	DEFINITION
+
+	func<int,2>(3);							//num gets value 2			CALL
+	//* the expression needs to be a constant value and not a variable as the value of the template parameters is determined compile-time not run-time
+
+Name Visibility :
+	Scopes : The point in the program where a named entity is declared influences its visibility.
+		- An entity outside of any block has GLOBAL SCOPE. Its name is valid anywhere in the code.
+		- An entity declared within a block like function/selection statement, it has BLOCK SCOPE and is only visible within the specific block. Such variables are called Local Variables.
+			Its visibility extends till the end of the block including inner blocks.
+		- In each scope, a name can only represent one entity. An inner block being a different block can re-utilize a name existing in an outer scope to refer to a different entity only within
+			the inner block, hiding the entity it names outside
+
+	Namespcaes : 
