@@ -2,30 +2,25 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-
 using namespace std;
 
-// 1. Without Repetition (Standard Permutations)
-// Added int &count to track total permutations
 void generateWithoutRepetition(string s, int left, int right, int &count) {
     if (left == right) {
         cout << s << " ";
-        count++; // Increment counter when a full permutation is formed
+        count++;
     } else {
         for (int i = left; i <= right; i++) {
             swap(s[left], s[i]);
             generateWithoutRepetition(s, left + 1, right, count);
-            swap(s[left], s[i]); // Backtrack
+            swap(s[left], s[i]);
         }
     }
 }
 
-// 2. With Repetition
-// Added int &count to track total permutations
 void generateWithRepetition(string digits, string current, int length, int &count) {
     if (current.length() == length) {
         cout << current << " ";
-        count++; // Increment counter when a full permutation is formed
+        count++;
         return;
     }
 
@@ -39,7 +34,6 @@ int main() {
     cout << "Enter a set of digits (e.g., 123): ";
     cin >> input;
 
-    // Initialize counters
     int countNoRep = 0;
     int countWithRep = 0;
 
