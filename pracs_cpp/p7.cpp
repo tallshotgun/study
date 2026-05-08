@@ -18,21 +18,23 @@ int loopsGCD(int a, int b)
     return a;
 }
 
-int GCD(int a, int b)
-{
-    int gcd;
-    for (int i = 1; i < b; i++)
-        {
-            if (a % i == 0 && b % i == 0) gcd = i;
-        }
-    return gcd;
-}
-
 int main()
 {
     int a,b;
-    cin >> a >> b;
-    cout << "Using recursion: " << recursionGCD(a,b) << "\nUsing loops: " << loopsGCD(a,b) << "\nExtra method: " << GCD(a,b) << endl;
+    cout << "Enter first number: ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+    cout << "Using recursion: " << recursionGCD(a,b) << "\nUsing loops: " << loopsGCD(a,b) << endl;
 
     return 0;
 }
+
+/*
+[tsglmao@arch pracs_cpp]$ ./p7
+Enter first number: 2048
+Enter second number: 12
+Using recursion: 4
+Using loops: 4
+[tsglmao@arch pracs_cpp]$
+*/

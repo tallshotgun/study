@@ -46,3 +46,17 @@ Name Visibility :
   Calling	//to access from outside of scope, the scope resolution operator is used to specify which namespace(scope) is to be searched to find the identifier.
 	namespace::entity
 
+		- Namespaces with same identifier can be specified multiple times and different segments of code can be declared in the same and will by called by the same name.
+		- Namespaces can extend across different files of source code.
+
+	using: The keyword using introduces a name into the current declarative region thus avoiding the need to qualify it with scope resolution operator.
+		- When we introduce a namespace to a block, all its named entities will be directly accessed if same identifier is used without declaring it. But, if we declare with the same identifier,
+			the identifier becomes local and that one will be accessed if the identifier is used.
+		- We can split the code in different segments using {} to use entities with same names from different namespaces by using the using keyword inside those seperate blocks/segments.
+  Syntax
+	using namespace identifierNamespace;		//Introduce entire namespace to block (all functions, variables, identifiers)
+	using identifier::namedEntity;			//Introduce a particular named entity from the namespace which will be directly accessed (unless declared locally again)
+
+	Namespace aliasing: Existing namespace can be aliased with new names.
+  Syntax
+	namespace new_name = current_name;
