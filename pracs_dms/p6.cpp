@@ -7,7 +7,8 @@ bool isCompleteGraph(const vector<vector<int>>& matrix, int n) {
         for (int j = 0; j < n; j++) {
             if (i == j) {
                 if (matrix[i][j] != 0) return false;
-            } else {
+            } 
+            else {
                 if (matrix[i][j] != 1) return false;
             }
         }

@@ -33,3 +33,27 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
+/*
+[tsglmao@arch pracs_cpp]$ ./p3 this is a message that will have its alphabets counted
+Letter | Occurence
+a      | 6
+b      | 1
+c      | 1
+d      | 1
+e      | 5
+g      | 1
+h      | 4
+i      | 4
+l      | 3
+m      | 1
+n      | 1
+o      | 1
+p      | 2
+s      | 6
+t      | 6
+u      | 1
+v      | 1
+w      | 1
+[tsglmao@arch pracs_cpp]$
+*/

@@ -27,3 +27,14 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
+/*
+[tsglmao@arch pracs_cpp]$ ./p1
+No command line argument found.
+Enter Value of n: 5
+0.783451
+[tsglmao@arch pracs_cpp]$ ./p1 5
+Using value of n from command line: 5
+0.783451
+[tsglmao@arch pracs_cpp]$ 
+*/

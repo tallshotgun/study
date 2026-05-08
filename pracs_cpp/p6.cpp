@@ -33,12 +33,19 @@ int binSearchLoop(const int arr[],int low, int high, int elem)
 
 int main(int argc, char* argv[])
 {
-    int arr[] = {1,2,3,4,5,6,7,8,9,10};
-    int elemToFind;
-    cout << "Enter element to find: ";
-    cin >> elemToFind;
+    int size, elemToFind;
+    cout << "Enter number of elements you want in the array: ";
+    cin >> size;
+    int arr[size];
+    cout << "Enter elements seperated by space:\n";
 
-    int size = sizeof(arr)/sizeof(arr[0]);
+    for (int i = 0; i < size; ++i)
+    {
+        cin >> arr[i];
+    }   
+    
+    cout << "Enter element to find: ";
+    cin >> elemToFind;  
 
     int index1 = binSearchLoop(arr, 0, size - 1, elemToFind );
     int index2 = binSearchRecursion(arr, 0, size - 1, elemToFind);
@@ -51,3 +58,14 @@ int main(int argc, char* argv[])
     
     return 0;    
 }
+
+/*
+[tsglmao@arch pracs_cpp]$ ./p6
+Enter number of elements you want in the array: 8
+Enter elements seperated by space:
+2 4 5 7 13 28 53 3
+Enter element to find: 13
+Index without using recursion: 4
+Index using recursion: 4
+[tsglmao@arch pracs_cpp]$
+*/
