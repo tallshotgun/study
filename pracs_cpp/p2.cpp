@@ -28,7 +28,7 @@ int main()
         {
             newarr[newArrSize] = arr[i];
             newArrSize++;
-        }
+        } 
     }
 
     for (int i = newArrSize - 1; i >= 0; --i)
