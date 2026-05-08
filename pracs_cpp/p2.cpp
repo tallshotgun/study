@@ -44,7 +44,7 @@ int main()
         {
             newarr[newArrSize] = arr[i];
             newArrSize++;
-        }
+        } 
     }
 
     cout << "\nFinal Array\n{";
