@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 int main()
 {
     int arr1size, arr2size;
