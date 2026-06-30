@@ -46,3 +46,266 @@ Name Visibility :
   Calling	//to access from outside of scope, the scope resolution operator is used to specify which namespace(scope) is to be searched to find the identifier.
 	namespace::entity
 
+Arrays : 
+
+Pointers : A variable that stores the address of another variable (points to the variable)
+  Syntax
+	type * name; 		//Syntax to declare a pointer
+
+		- The type of the pointer will be the same as the data type it points to.
+		- The type of a pointer is then "type*"
+
+	Address-of-operator (&) : Returns the address of an object when preceded by the objects name. Actual address of an object cannot be known before runtime.
+  Syntax
+	type var = value;
+	cout << &var;		// Prints address of var in memory
+	type * p1 = &var; 	// p1 is a pointer and stores the address of var variable
+
+	Dereference operator (*) : Pointers can used used to access the variable they point to directly by using the dereference operator
+  Syntax	
+	int var = 10;
+	int * p1 = &var;	//Stores address of var
+	cout << *p1;		//Prints 10: value of the variable it points to.  * was used to dereference the address stored in p1 and directly access var
+	*p1 = 20; 		//Dereference operator used to dereference the address stored in p1 and access var directly and assign it value 20
+	cout << p1;		//Prints the address of var stored
+
+		- The dereference operator and the asterisk used to declare a pointer are two different things represented by the same sign. The difference is dereference operator is not used with a
+		  data type while the declaring asterisk is used with a data type.
+		- A pointer may point to different things throughout the program by simply changing the address stored in it.
+  Syntax
+	p1 = &var2;		//Note: * was not used.
+
+		- Declaring mutiple pointers is possible by typing an asterisk for each pointer.
+  Syntax
+	int * p1, * p2, p3;	//p3 is type int while p1 and p2 are int *	(due to precedence rules)
+
+	Pointers and Arrays : Arrays work much like pointers to their first element.
+		- When passing an array to a function, it decomposes into a pointer to its first element as copying an entire array is an expensive operation. The elements in an array are store with
+		  	consecutive addresses.
+		- If we increment a pointer then its memory address changes to the address of the next memory block. Since different types are assigned different spaces in memory, increment and
+		  	decrement operations are done based on the type.
+			- For example for a type int, when incrementing, 4 is added (int size is 4 bytes so it takes 4 memory blocks 1 byte each) to the pointer address and then pointer points to the 
+				next object.
+		- The square brackets used when specifying the index are a dereferencing operator called offset operator. They dereference the variable they follow just as * does, but they also add
+			the number between the brackets to the address being dereferenced (that number of elements are incremented).
+	a[5] = 0;
+	*(a+5) = 0;
+		- Both perform same action. 
+	
+	Pointer arithmetic : It is different from performing arithmetic on regular types. Only addition and substraction are allowed.
+		- Pointers are made to point to the following element of the same type and therefore when we increment or decrement a pointer, the size of its type is added or substracted to the
+			address it points to and that many blocks of memory are moved forward or backward.
+		- Increment or decrement when used in prefix or postfix have different precedence compared to *. Postfix has higher precedence than *, while prefix has same as *.
+	*++p;	//Same as *(++p). Increment pointer so it points to next element then dereference it. So value of the next element is essentially returned.
+	++*p;	//Same as ++(*p). Dereference the pointer: Access the variable and increment its value
+	*p++;	//Same as *(p++). Pointer is incremented so it points to the next element but the value dereferenced is the original one because of postfix.
+	(*p)++;	// Pointer is dereferenced then the value at the address is incremented but the original value is returned.
+
+	Const : Const keyword can be used to specify pointers as read-only
+		- A pointer to a non-const can be implicitly converted to a pointer to const but not the other way around.
+			- If we qualify the type pointed by the pointer as const by writing const before the type, the pointer can read the value but not modify it.
+			- Note: the data type is const which means the data cannot be changed but the pointer is not const, so it can be given another value or increment or decrement.
+			- But we can also define constant pointer by writing constant before the identifier (after the *). This makes it so that pointer value cannot be changed(the address it stores
+				will always remain same after initialization). Thus initializing a const pointer is also a must. 
+				Note: in this case the pointer (address) is constant but not the data. So the pointer can still modify the data it points to only it cannot point to any other data
+					like an array.
+				Note: for const pointer the const should be after the *. If it is between type and * it is still non-const pointer to const type.
+		Summary:
+			const int * ptr = &var;		//non-const pointer to const int
+			int const * ptr = &var;		//non-const pointer to const int
+			int * const ptr = &var;		//const pointer to non-const int
+			const int * const ptr = &var;	//const pointer to const int
+			int const * const ptr = &var;	//const pointer to const int
+
+	Pointers to pointers : We can declare pointers that point to other pointers by adding an asterisk for each level of indirection in the declaration of the pointer.
+		- The pointer to a pointer points to the address where that pointer being pointer is stored not to the address that is stored in the pointer being pointed.
+		- If var has address 1766, p1 stores that address but its own address is different say 2034. p2 then stores the address where p1 is : 2034.
+		- p2 will have 2 asterisks in its declaration as it points to another pointer and if another pointer p3 points to p2 then it will have 3 asterisk or if it points to p1 then 2.
+  Syntax
+	char var = 'a';
+	char * p1 = &var;	//stores address of var
+	char ** p2 = &p1;	//stores address of p1
+	cout << *p2;		//prints address of var which is the value of p1
+	cout << **p2;		//prints value of var which is value at the address stored in p1
+	
+	Reference variable : It is like an alias to an existing variable.
+  Syntax
+	int original = 10;
+	int & ref = original;
+	
+		- Both names point to same memory address
+		- References must be initialized on declaration. References can not be reassigned. Assigning a value to reference will simply change the value at the address it points to.
+		- References can used to pass arguments without making copy. Also const reference can be used to ensure it can not be modified.
+
+	void pointers : void pointers point to a value that has no type.
+		- This can also be used to point to any data type.
+		- But data pointed by them can not be directly dereferenced as the data type is needed to be known for that. So any address in void pointers need to be transformed into a concrete 
+			data type before being dereferenced.
+		- Example usage : to pass generic parameter to a function.
+
+	nullptr : It is a value that any pointer type can take and the pointer actually points to nowhere.
+  Syntax
+	int * q = 0;
+	int * p = nullptr;	//0 or nullptr both work
+
+	Pointers to functions : Functions can be passed as arguments using pointers. 
+		- Pointers to functions are declared as normal function declarations except function name is enclosed with an asterisk inside brackets ().
+  Syntax
+	int f2 (int a, int b){}
+	int f1 (int x, int (*f3)(int,int)){return 1;}	//f3 is a parameter which takes a function name as an argument. Both should have same number of arguments and types
+	int main(){ int (*function)(int,int) = f2;	//Here function is a pointer to f2 having same number and type of parameters and also function is pa 
+		int x = 10;
+		f1(x,function); }			//Function is passed as argument to f1 and function is also a pointer to f2. So if function is called inside f1 then f2 will execute.
+
+Dynamic memory : When the memory needed by a program can only be determined during runtime, dynamic memory is used.
+		
+	new and new[] : The new operator is followed by a data type specifier and if a sequence of >1 element is required, the number of these within brackets []. It returns a pointer to the beginning
+				of the new block of memory allocated.
+  Syntax
+	pointer = new type;
+	pointer = new type [var];
+
+		- Difference between regular array and this declaration with new is that in new it does not need to be a constant expression but can be a variable. The dynamic memory is allocated by 
+			the system from memory heap. They are not automatially deallocated until the program ends or delete is explicitly call unlike local variables which are stored on the stack
+			when a function is entered and freed when the function exits, making their lifetimes limited to the scope they are defined in.
+		- Since computer memory is a limited resource, there are no guarantees that all requests to allocate memory using operator new are going to be granted by the system. 
+		- To check if the allocation was successful:
+			- an exception of type bad_alloc is thrown when the allocation fails by new operator.
+			- also we can use a method nothrow when allocating memory using new by specifying nothrow in brackets () after new. If allocation fails then instead of throwing a bad_alloc 
+				exception, the pointer returned by new is a null pointer.
+  Syntax
+	pointer = new (nothroe) type [var];
+
+	delete and delete[] : delete operator can be used to free the memory allocated once it is no longer needed, otherwise it stays allocated till end of program.
+  Syntax
+	delete pointer;		//Releases memory of a single element allocated using new
+	delete[] pointer;	//Releases memory allocated for arrays of elements using new and a size in brackets.
+
+		- Value passed as argument to delete shall be either a pointer to a memory block allocated previously using new or a null pointer (where delete produces no effect).
+		- Since pointer is a pointer, it can be assigned a different value. But before doing so delete should always be used to that the memory previously assigned is deleted as it does not
+			have an identifier, otherwise it will be lost and a memory leak will be caused.
+
+Data Structure : A data structure is a group of data elements grouped together under one name. These data elements are known as members and can have different types and lengths.
+
+Syntax
+	struct type_name { mem_type1 mem_nam1; mem_type2 mem_name2;....} object_names;
+	type_name o1,o2;
+
+		- type_name is a name for the structure type, object_name can be a list of objects that have the type of this structure. Inside {} is a list with data members each one specified with
+			a type and a valid identifier name.
+		- This declaration creates a new type (type_name) whih can be used to declare objects of this type (type_name o1,o2..;). type_name is used just like any other type. 
+		- Also, object_names are similarly names of the object of this type seperated by commas, before the semicolon. In this case the type name becomes optional; struct requires either a 
+			type_name or atleast one name in object_names, but not necessarily both.
+	
+		- Many object can be declared from a single structure type and once declared its members can be accesses directly using (.) dot. Each object will have its own members.
+			o1.mem_name1	o2.mem_name2		etc. are ways to access data members of an object. Each of these has the data type corresponding to the member they refer to.
+								o1.mem_name1 will have fundamental type mem_type1 and so on. 
+		- Members of an object act just as regular variables and so are objects with type type_name of the struct.
+		- Since structs are types, they can also be used as the type of arrays to construct tables of databases of them.
+
+		- Structures can be pointed to by pointers of its own type (type_name). We can create a pointer with type_name and store address of object of same struct.
+	Arrow operator (->) : It is a dereference operator used exclusively with pointers to objects that have members.
+		- pointer->	is same as 	(*pointer).
+		- So,
+			pointer->mem_name; 	//Will point to the data member mem_name of the object whose address is stored in the pointer.
+		- It is same as
+			(*pointer).mem_name;
+	Nested Structures : A structure can have another structure as its data member and it can be accessed using multiple (.) .
+
+Other data types : 
+
+Classes :  Classes are an expanded concept of data structures. They contain data members, but they can also contain functions as members.
+	- Classes are defined using the class keyword or struct keyword.
+	- An object is an instantiation of a class.
+  Syntax
+	class class_name { access_specifier1: member1; access_specifier2: member2; ...}object_names;
+	- Class name is a valid identifier for the class, object_names is an optional list of names for objects of this class. The body can contain members which can be data or function declaration
+		and optionally access specifiers.
+	
+	Access specifier : Access specifier is one of the three following keywords - private,public,protected; and these specifiers modify the access rights for the members that follow them.
+	  Private : 	private members are accessible only from other members of the same class
+	  Protected : 	protected members are only accessible from other members of same class and also from members of its derived classes
+	  Public : 	public members are accessible from anywhere the object is visible
+	
+		- By default all members of a class declared with the class keyword have private access for all its members. So any member declared before any other access specifier has private access
+			automatically. But if we declare with struct keyword, the default visibility is public. 
+		- The public members of the class after its object is created can be accessed outside of a class like normal variables or function as in plain data structures.
+		- We can declare a function or variable inside a class and complete the definition outside of the class. But since they are limited to the scope of the class we have to use :: operator
+			when writing name of the function or variable.
+			- When a function is defined inside the class it is automatically considered an inline member function by the compiler. 
+		- Multiple objects can be declared from a class, and each object has its own member variables and member functions.
+	
+	Constructors : Constructor is a special function is a class which is automatically called whenever a new object of the class is created, allowing the class to initialize member variables, set 
+			default values for all objects at the beginning to prevent undefined results and also to allocate storage in advance.
+		- Constructor is declared like a regular member function but its name should match the class name and should not have any return type (not even void).
+		- Constructor only executes once when object is created and cannot be called like regular member functions.
+		- Constructors can also be overloaded by taking different parameters types or number or both.
+		- If a constructor is not given any parameters, it is called default constructor. When creating an object if we want to call the default constructor we don't put the empty () after
+			object name. This is because the empty parentheses would make it a function declaration with type Rectangle since class_name is a type; instead of object declaration.
+			- Alternatively we can use {} to explicitly tell that it is an object declaration so compiler never confuses it with function declaration.
+		- In constructor definition when we initialize members, we can do so without writing statements in the body. We insert a colon before the body and then a list of initializations of the
+			for the class members.
+  Syntax
+	class class_name { memtype1 memname1; memtype2 memname2;
+		public : 
+			class_name (memtype1 var1, memtype2 var2) { memname1 = var1; memname2 = var2; } 		//Normal
+			class_name (memtype1 var1, memtype2 var2) : memname1(var2), memname2(var2) {}			//Member initialization list
+	}object_names;
+		
+		- For fundamental data types both ways make no difference. But for member objects (whose type is a class), if they are not initialized with colon, they are default-constructed. i.e.	
+			the default constructor of the class which is their type is run to create a default object and then the value is reassigned to its members. This causes problem 1 where a default
+			object is creating for it to get reassigned which is wasteful.
+		- This is because before reaching the main body and assigning a value, an object must be existing in memory. When the main block is reached the compiler tries to find the memname object
+			and looks at the class to find its typename which is also another class. So it tries to run the default constructor of that class. In classes if no constructor are present,
+			the compiler creates an automatic default constructor which tries to initialize the member objects of the class.
+			- But if some other constructor is defined which is not default then automatic default constructor will not be created and this causes problem 2 when using the normal way
+				of initializing members since the default constructor does not exist and the compiler calls it when entering main body.
+		- Using member initialization list solves both problems. Before the main body is reached the compiler finds the member initialization with memname and arguments. It looks in the 
+			blueprint and finds the type of this memname is a class. Then it matches the arguments in the constructor and matches it with constructors in the memtype class. Then it 
+			runs that constructor instead of default constructor and since the arguments are already provide, default object is not created, the members are directly initialized.
+	
+	Operators overloading : Since class are like types, we can use operators on the objects created of that class type. We have to define what would be the behaviour of the type when a specific
+				  operator is used.
+		- Operators can be overloaded so that their behaviour can be defined for any type including classes. This is dony be means of operator functions, which are regular functions with 
+			special names: their name begins by the operator keyword followed by the operator sign that is overloaded.
+  Syntax
+	type operator sign (parameters) {}
+
+	this : The keyword this represents a pointer to the object whose member function is being executed. It is used within a class's member function to refer to the object itself.
+
+	static members : A class can contain a static data member or static function.
+		- A static data member of a class, also known as "class variable", is a common varaible for all the objects of that same class, sharing the same value. If an object changes its value
+			the value is changed for all objects.
+		- To avoid them from getting declared several times, they cannot be directly declared in the clas but need to be initialized somewhere outside it.
+  Syntax
+	type_of_the_static_var class_name::var_name = value;
+
+		- It can be referred to as a member of any object of that class or directly by the class name.
+		- It is just like a non-member variable but with a name that requires to be accessed like a member of a class or an object.
+		- NOTE : Has to be public otherwise can only be accessed through public functions of the class.
+
+		- Similarly static member functions are members of a class that are common to all object of that class, acting exactly like non-member functions but being accessed like members of the
+			class.
+			- Since they are like non-member functions, they cannot access non-static members and cannot use keyword this.
+	
+	const member functions :
+		- When an object of a class is qualified as const, access to its data members from outside of the class is read-only.
+			- The constructor is still called and allowed to initialize and modify the members.
+		- The member function of a const object can only be called if the function is itself qualified as const. This is done by writing const after the () used for parameters in function 
+			prototype.
+		- Member functions specified as const can not modify non-static data members nor can they call other non-const functions.
+		- non-const objects can access both const and non-const functions while const objects can only access const functions.
+		- Member function can be overloaded based on their constness; const functions are called by const objects and non-const functions are called by non-const objects.
+	
+	class templates : Like function templates, class templates can also be created allowing the members of the class to use templater parameters as types.
+  Syntax
+	template <class gen_type>
+	class name { gen_type var; public : gen_type func{}...}
+	int main (){ name<funda_type> obj1;}
+
+		- If a member function is defined outside of the class it should be preceded with line template <class gen_type> .
+  Syntax
+	template <class gen_type>
+	gen_type name<gen_type>::func(){}
+	
+
