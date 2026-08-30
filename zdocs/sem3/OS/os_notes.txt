@@ -1,0 +1,64 @@
+OPERATING SYSTEMS
+
+INTRODUCTION
+
+- OS
+	A program that manages the computer's hardware
+	Provides a basis for application programs
+	Intermediary between computer user and computer hardware
+
+	Some are designed to be convenient, some to be efficient and some a combination of both. (PC, Mobile, Mainframe)
+
+	An OS is large and complex and must be created piece by piece and each piece should be a well-delineated portion of the system, with carefulyl defined inputs, outputs and functions.
+
+- Computer System
+	Components : Hardware, Application Programs, Operating System, Users
+
+	Hardware  		- The CPU, memory and Input/Output devices, provide basic computing resources the system.
+	Application Programs 	- Word, Spreadsheets, browsers etc. define the way in which these resources are used to solve the users' computing problems.
+	Operating System 	- Controls the hardware and coordinates its use among the various application programs for the various users.
+				- Provides the means for proper use of these resources in the operation of the computer system.
+				- Provides an environment for the various application programs to do useful work.
+
+- User View 
+	In case of most users who sit in front of a PC with monitors, keyboards, mouse and system unit, such system is designed for one user to monopolize its resources.
+		-> In this case the OS is designed for ease of use. Some attention it paid to performance and none to resource utilisation (how various hardware and software resources are shared).
+		-> Such systems are optimized for the single-user experience rather than requirements of multiple users.
+
+	Another case, where users sit in front of a terminal connected to a mainframe or a minicomputer while other users are accessing the same computer through other terminals and they
+	   share resources and may exchange information.
+		-> Operating systems in this case are designed to maximise resourse utilization, to assure all available CPU time, memory, I/O are used efficiently and that no individual user
+	   	   their fair share.
+
+	In other cases, users sit at workstations connected to networks of other workstations and servers. These users have dedicated resources at their disposal, but they also share resources
+	   such as networking and servers, including file, computer and print servers
+		-> Their operating system is designed to compromise between indivudal usability and resource utilization.
+
+	Many varieties of mobile computers are standalone units for individual users. They are conencted to internet and the user interface for mobile computers generally feature a touch screen,
+	   where user interacts with the system by pressing and swiping fingers across the screen rather than using a physical keyboard and mouse.
+
+	Some computers have little or no user view. Embedded computer in home devices and automobiles may have numeric keypads and other indicating lights to show status but they and their operatiing
+	   systems are designed primarily to run without user intervention.
+
+- System View
+	From computer's POV, the OS is the program most intimately involved with the hardware. We can view the OS as a RESOURCE ALLOCATOR in this context. A computer system has many resources that 
+	   may be required to solve a problem. The OS acts as the manager of these resources
+		-> Facing numerous and possibly conflicting requests for resources, the OS must decide how to allocate them to specific programs and users so that it can operate the computer system
+		   efficiently and fairly. Resource allocation is especially important where many users access the same mainframe or minicomputer.
+	
+	A different view of OS emphasizes the need to control the various I/O devices and user programs. An OS is a control program.
+		-> A control program manages the execution of user programs to prevent errors and improper use of the computer. It is especially concerned with the operation and control of I/O devices.
+	
+- Defining operating systems
+	Operating systems exist because they offer a sreasonable way to solve the problmen of creating a usable computing system. Fundamental goal of computing systems is to execute user programs and 
+	   to make solving user problems easier. Computer hardware is constructed toward this goal, but since bare hardware alone is not easy to use , application programs are developed. These programs
+	   require certain common operation. The commons functions of controlling and allocating resources are then brought together into one piece of software the operating system.
+
+	The operating system is the one program running at all times on the computer, usually called the kernel. Alongwith the system programs which are associated with the OS but are not necessarily 
+	   part of the kernel and application programs, which include all programs not associated with the OS.
+	
+	-> Mobile operating systems often include not only a core kernel but also middleware, a set of frameworks that provide additional services to application developers.(databses, multimedia,graphics)
+	
+- Comptuer-system organization
+	
+	
