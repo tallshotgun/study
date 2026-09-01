@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+    form { background: white; padding: 20px; border-radius: 8px; width: 320px; box-shadow: 0 0 8px #bbb; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 4px; }
+    input, select { width: 100%; padding: 6px; margin-top: 2px; }
+    .error { color: red; font-size: 14px; }
+    .checkbox-label { display: inline; }
+    .radio-label { display: inline; margin-right: 10px; }
+    button { padding: 8px 18px; background: #007bff; color: white; border: none; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <form id="studentForm" onsubmit="return validateForm()">
+    <h2>Student Registration</h2>
+    <div class="form-group">
+      <label for="roll">Roll Number (7 digits):</label>
+      <input type="text" id="roll" name="roll">
+      <div id="rollError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="name">Name (Alphabets only):</label>
+      <input type="text" id="name" name="name">
+      <div id="nameError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob">
+      <div id="dobError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label>Gender:</label>
+      <span class="radio-label"><input type="radio" name="gender" value="Male"> Male</span>
+      <span class="radio-label"><input type="radio" name="gender" value="Female"> Female</span>
+      <span class="radio-label"><input type="radio" name="gender" value="Other"> Other</span>
+      <div id="genderError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="course">Course:</label>
+      <select id="course" name="course">
+        <option value="">Select Course</option>
+        <option value="B.Sc">B.Sc</option>
+        <option value="B.Com">B.Com</option>
+        <option value="B.A">B.A</option>
+        <option value="B.Tech">B.Tech</option>
+      </select>
+      <div id="courseError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <input type="checkbox" id="terms" name="terms">
+      <label for="terms" class="checkbox-label">I accept the terms and conditions</label>
+      <div id="termsError" class="error"></div>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <script>
+    function validateForm() {
+      let valid = true;
+
+      // Roll number validation
+      const roll = document.getElementById('roll').value;
+      if (!/^\d{7}$/.test(roll)) {
+        document.getElementById('rollError').innerText = "Enter a 7-digit numeric roll number.";
+        valid = false;
+      } else {
+        document.getElementById('rollError').innerText = "";
+      }
+
+      // Name validation
+      const name = document.getElementById('name').value;
+      if (!/^[A-Za-z ]+$/.test(name) || name.trim() === "") {
+        document.getElementById('nameError').innerText = "Enter alphabets only for name.";
+        valid = false;
+      } else {
+        document.getElementById('nameError').innerText = "";
+      }
+
+      // DOB validation
+      const dob = document.getElementById('dob').value;
+      if (dob === "") {
+        document.getElementById('dobError').innerText = "Select a valid date of birth.";
+        valid = false;
+      } else {
+        document.getElementById('dobError').innerText = "";
+      }
+
+      // Gender validation
+      const genders = document.getElementsByName('gender');
+      let genderSelected = false;
+      for (let g of genders) { if (g.checked) genderSelected = true; }
+      if (!genderSelected) {
+        document.getElementById('genderError').innerText = "Select your gender.";
+        valid = false;
+      } else {
+        document.getElementById('genderError').innerText = "";
+      }
+
+      // Course selection validation
+      const course = document.getElementById('course').value;
+      if (course === "") {
+        document.getElementById('courseError').innerText = "Select your course.";
+        valid = false;
+      } else {
+        document.getElementById('courseError').innerText = "";
+      }
+
+      // Terms checkbox validation
+      const terms = document.getElementById('terms').checked;
+      if (!terms) {
+        document.getElementById('termsError').innerText = "Accept the terms to continue.";
+        valid = false;
+      } else {
+        document.getElementById('termsError').innerText = "";
+      }
+
+      return valid;
+    }
+  </script>
+</body>
+</html>
+
