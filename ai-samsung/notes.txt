@@ -1,0 +1,15 @@
+Machine learning :
+	Problem statement -> Data collection -> Data cleaning -> Feature engineering -> EDA -> Data Modeling -> Model evaluation -> Optimization and deployment
+
+	Machine learning   is a branch of AI that enables computers to learn patterns from data and make predictions or decisions without being explicitly programmed for every scenario.
+
+	FEATURE = COLUMNS : Engineering -> Keep important columns and remove rest
+
+	Exploratory data analysis (EDA) :
+
+
+COSINE SIMILARITY **
+CONTENT BASED FILTERING && COLLABORATIVE BASED FILTERING 
+
+
+FEATURE SCALING : ACCURACY INCREASE

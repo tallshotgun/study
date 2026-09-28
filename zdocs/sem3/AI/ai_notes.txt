@@ -1,0 +1,37 @@
+Control stratergy - 
+
+Which rule to apply next during the process of search for a solution to a problem when more than one rule will matches the current state
+It has 2 requirements : 
+	A good control stratergy is that it causes action
+	A good control stratergy is that it be systematic
+
+Uninformed Search
+	
+It is also called a blind search. These stratergies have no additional information about states beyong what is given in a problem deinition.
+They explore the search space systematically but blindly.
+
+Informed Search / heuristic search
+
+These stratergies use problem specific knowledge a heuristic function to estimate how promising a state is.
+This lets them search more efficiently by prioritising better looking path
+
+
+Breadth first search
+
+This algorithm searches breadthwise in a tree or a graph
+Searching starts from root node of the tree and expands all successor roots at the current level before moving to the node of next level
+Implement using fifo queue data structure
+
+will not get trapped exploring a line
+guarantee to find a solution if exists
+
+requires a lot of memory
+and time if solution is far away from the root
+
+
+Many ai problems are too complex for brute due to combinatorial explosion
+to guide the search towards promising are 
+
+heuristic function
+the function is a way to inject task specific knowledge into control process.
+it evaluates a given state in search space and provides an estimate of how close that state is to the goal
