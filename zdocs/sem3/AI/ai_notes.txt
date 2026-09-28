@@ -1,37 +1,100 @@
-Control stratergy - 
+Field of Artificial Intelligence or AI, is concerned with not just understanding but also building intelligent entities; machines that can computer how to act effectively and safely in a wide variety of novel situations.
 
-Which rule to apply next during the process of search for a solution to a problem when more than one rule will matches the current state
-It has 2 requirements : 
-	A good control stratergy is that it causes action
-	A good control stratergy is that it be systematic
+General subfields of AI : learning, reasoning, perception ... AND Specific subfields : chess, maths, architecture, poetry ...
 
-Uninformed Search
+Researchers pursue several different versions of AI.
+   Human v/s Rational	
+	Some defined intelligence in terms of fidelity to HUMAN PERFORMANCE - does the system mimic how humans operate
+	Others prefer an abstract, formal definition : RATIONALITY - does the system achieve optimal, logically correct outcomes
+
+   Thought v/s Behaviour
+	Some consider intelligeence to be a property of INTERNAL THOUGHT PROCESS and REASONING
+	Others focus on intelligent BEHAVIOUR; an external characterization
+
+Pursuit of human-like intelligence must be somewhat related to psychology, involving observations and hypotheses about actual human behaviour and thought process 
+A rationalist approach involvees a combination of mathematics and engineering, and connects to statistics, control theory and economics.
+
+ACTING HUMANLY : The turing test approach
+
+Turing test proposed by Alan Turing was designeed as a thought experiment that would sidestep the philosophical vagueness of the question "Can a machine think?". A computer passed the test if a human interrogator, after posing some 
+written question, cannot tell whether the responses come from a person or a computer.
+
+The computer would need the following capabilities : 
+	natural language processing 		to communicate succesgully in a human language
+	knowledge representation		to store what it knows or hears
+	automated reasoning			to answer question and to draw new conclusion
+	machine learning			to adapt to new circumstances and to detect and extrapolate patterns
+
+Other researchers proposed a Total Turing Test, which requires interaction with objects and people in the real world
+	computer vision	and speech recognition	to percieve the world
+	robotics				to manipulate objects and move about
+
+
+THINKING HUMANLY : The cognitive modeling approach
+
+To say that a program thinks like a human, we must know how humans think :
+	introspection			trying to catch our own thoughts as they go by
+	psychological experiments	observing a person in action
+	brain imaging			observing the brain in action
+
+Once we have a sufficiently precise theory of mind, it becomes possible to express the theory as a computer program. If program's I/O matches corresponding human behaviour, that is evidence that some of the programs's mechanisms
+could also be operating in humans.
+
+Not content merely to have their program solve problemsn correctly, but more concrene with comparing the sequence and timing of its reasoning steps to thos of human subject solving the same problems.
+
+
+THINKING RATIONALLY : The laws of thought approach
+
+Aristotle's syllogisms provided patterns for argument structures that always yielded correct conclusions when given correct premises. These laws of thought were supposed to govern the operation of the mid; their study initiated the 
+field called LOGIC.
+
+Logicians developed a precise notation for statements about bjects in the world and the relations amongst them. The logicist tradition in AI hopes to build on such programs to create intelligent systems.
+
+Logic as conventionally understood requires knowledge of the world that is CERTAIN; a condition that in reality is seldom achieved. The THEORY OF PROBABILITY fills this gap, allowing rigorous reasoning with uncertian information.
+	It allows the construction of a comprehensive model of rational thought, leading from raw perceptual information to an understanding of how the world works to predictions of the future.
+
+What is does not do is generate INTELLIGENT BEHAVIOUR; rational action.
+
+
+ACTING RATIONALLY : The rational agent approach
+
+An AGENT is just something that acts. 
+
+All computer programs do something but agents are expected to more : operate autonomously, percieve their environment, persist over a prolonged time period, adapt to change and create and pursue goals,
+
+A RATIONAL AGENT us one that acts so as to achieve the best outcome or, the best expected outcome (when there is uncertainity).
+
+Sometimes part of being a rational agent is making correct inferences, because one way to act rationally is to deduce that a given action is best and then to act on that conclusion.
+On the other hand there are ways of acting rationally that cannot be said to involve inference. A REFLEX ACTION.
+
+
+All the skills needed for the turing test also allow an agent to act rationally. Knowledge representaion and reasoning enable agents to reach good decisions. We need to be able to generate comprehensible sentences in natural language to 
+get by in a complex society. We need learning not only for erudition, but also it improves our ability to generate effective behaviour, especially in circumstances that are new.
+
+Rational Agent approach has two advantages :
+	1. More general than "laws of thought" approach - Correct inference is just one mechanism for achieving rationality.
+	2. More amenable to scientific development.
+
+The standard of rationality is mathematically well defined and completely general.
+
+Over the years, AI has focused on the study and construction of agents that do the right things. What counts as right thing is defined by the objective we provide to the agent. We might call it the STANDARD MODEL.
+
+One important refinement in the standard model is to take account for the fact that perfect rationality, always taking the exactly optimal action, is not feasible in complex environments.
+	The computational demands are just too high. 
+
+BENEFICIAL machines
+The standard model has been a useful guide for AI research since its inception but it is probably not the right model in the long run as it assumes that we will supply a fully specified objective to the machine.
+
+In the real world it becomes more and more difficult to sprecify the objective completely and correctly.
+
+Value alignment problem : The problem of achieving agreement between our true preferences and the objective we put into the machine.
+	The values or objectives we put into the machine must be aligned with those of a human. In a lab or simulator we can just reset and fix the objective but as the field progresses towards increasingly capable intelligent	
+		systems that are deployes in the real world this approach is no longer viable. An incorrect objective will produce negative consequences and the more intelligent the system, more negative the consequences.
+
+	It is impossible to anticipate all the ways in which a machine pursuing a fixed objective might misbehave. We dont want machines that are intelligent in the sense of pursuing their objectives; we want them to pursue	
+		our objectives. If we cannot transfer those objectives perfectly to the machine we then need a new formulation, one in which the machine is pursuing our objectives but is necessarily uncertaion as to what they are.
+
+	When a machine knows that it doesnt know the complete objective, it has an incentive to act cautiously, ask permission, learn more about our preferences through observation and to defer to human control.
+	Ultimately we want agents that are PROVABLY BENEFICIAL TO HUMANS.
+
 	
-It is also called a blind search. These stratergies have no additional information about states beyong what is given in a problem deinition.
-They explore the search space systematically but blindly.
-
-Informed Search / heuristic search
-
-These stratergies use problem specific knowledge a heuristic function to estimate how promising a state is.
-This lets them search more efficiently by prioritising better looking path
-
-
-Breadth first search
-
-This algorithm searches breadthwise in a tree or a graph
-Searching starts from root node of the tree and expands all successor roots at the current level before moving to the node of next level
-Implement using fifo queue data structure
-
-will not get trapped exploring a line
-guarantee to find a solution if exists
-
-requires a lot of memory
-and time if solution is far away from the root
-
-
-Many ai problems are too complex for brute due to combinatorial explosion
-to guide the search towards promising are 
-
-heuristic function
-the function is a way to inject task specific knowledge into control process.
-it evaluates a given state in search space and provides an estimate of how close that state is to the goal
