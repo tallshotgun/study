@@ -1,64 +1,139 @@
-OPERATING SYSTEMS
+Operating System
 
-INTRODUCTION
+	A program that manages a computer's hardware. 
+	Provides a basis for application programs.
+	Acts as an intermediary between the computer user and the computer hardware.
 
-- OS
-	A program that manages the computer's hardware
-	Provides a basis for application programs
-	Intermediary between computer user and computer hardware
+	Different OS accomplish these tasks differently based on how they are designed and for
+		what purpose.
+	Some OS are designed to be convenient and others to be efficient and others to be 
+		combination of both.
 
-	Some are designed to be convenient, some to be efficient and some a combination of both. (PC, Mobile, Mainframe)
 
-	An OS is large and complex and must be created piece by piece and each piece should be a well-delineated portion of the system, with carefulyl defined inputs, outputs and functions.
-
-- Computer System
-	Components : Hardware, Application Programs, Operating System, Users
-
-	Hardware  		- The CPU, memory and Input/Output devices, provide basic computing resources the system.
-	Application Programs 	- Word, Spreadsheets, browsers etc. define the way in which these resources are used to solve the users' computing problems.
-	Operating System 	- Controls the hardware and coordinates its use among the various application programs for the various users.
-				- Provides the means for proper use of these resources in the operation of the computer system.
-				- Provides an environment for the various application programs to do useful work.
-
-- User View 
-	In case of most users who sit in front of a PC with monitors, keyboards, mouse and system unit, such system is designed for one user to monopolize its resources.
-		-> In this case the OS is designed for ease of use. Some attention it paid to performance and none to resource utilisation (how various hardware and software resources are shared).
-		-> Such systems are optimized for the single-user experience rather than requirements of multiple users.
-
-	Another case, where users sit in front of a terminal connected to a mainframe or a minicomputer while other users are accessing the same computer through other terminals and they
-	   share resources and may exchange information.
-		-> Operating systems in this case are designed to maximise resourse utilization, to assure all available CPU time, memory, I/O are used efficiently and that no individual user
-	   	   their fair share.
-
-	In other cases, users sit at workstations connected to networks of other workstations and servers. These users have dedicated resources at their disposal, but they also share resources
-	   such as networking and servers, including file, computer and print servers
-		-> Their operating system is designed to compromise between indivudal usability and resource utilization.
-
-	Many varieties of mobile computers are standalone units for individual users. They are conencted to internet and the user interface for mobile computers generally feature a touch screen,
-	   where user interacts with the system by pressing and swiping fingers across the screen rather than using a physical keyboard and mouse.
-
-	Some computers have little or no user view. Embedded computer in home devices and automobiles may have numeric keypads and other indicating lights to show status but they and their operatiing
-	   systems are designed primarily to run without user intervention.
-
-- System View
-	From computer's POV, the OS is the program most intimately involved with the hardware. We can view the OS as a RESOURCE ALLOCATOR in this context. A computer system has many resources that 
-	   may be required to solve a problem. The OS acts as the manager of these resources
-		-> Facing numerous and possibly conflicting requests for resources, the OS must decide how to allocate them to specific programs and users so that it can operate the computer system
-		   efficiently and fairly. Resource allocation is especially important where many users access the same mainframe or minicomputer.
 	
-	A different view of OS emphasizes the need to control the various I/O devices and user programs. An OS is a control program.
-		-> A control program manages the execution of user programs to prevent errors and improper use of the computer. It is especially concerned with the operation and control of I/O devices.
-	
-- Defining operating systems
-	Operating systems exist because they offer a sreasonable way to solve the problmen of creating a usable computing system. Fundamental goal of computing systems is to execute user programs and 
-	   to make solving user problems easier. Computer hardware is constructed toward this goal, but since bare hardware alone is not easy to use , application programs are developed. These programs
-	   require certain common operation. The commons functions of controlling and allocating resources are then brought together into one piece of software the operating system.
+WHAT OPERATING SYSTEMS DO :
+	Four components of a computer system :
+   1. Hardware : The physcial parts : CPU, memory and I/O devices. These provide basic computing resources.
 
-	The operating system is the one program running at all times on the computer, usually called the kernel. Alongwith the system programs which are associated with the OS but are not necessarily 
-	   part of the kernel and application programs, which include all programs not associated with the OS.
+   2. Operating System : The software that sits directly on top of the hardware. It controls and
+	coordinates how the hardware is used among the various applications and users.
+
+   3. Application programs : The software you actually use to get work done.
+	Browsers, word processors, games, compilers etc.
+
+   4. Users : People, machines or even other computers.
+
+Think of hardware as the raw resources and the operating system is what governs and controls these
+   resources. It provides the rules, environment and infrastructure to ensure resources are used fairly and efficiently.
+
+	ViewPoint 1 : The USER view
+   The design of an OS depends heavily on who is using it and how they are interacting with it.
+   
+	PC/Laptop user: System is designed for one user to monopolize its resources. Goal of 
+	   OS here is ease of use and performance. 
+
+	Mainframe/Minicomputer : Here multiple users are connected to one massive central computer
+	   through terminals. The OS is this case is designed for resource utilization. It must
+	   carefully manage CPU time and memory so all 50 users get a fair share and no single
+	   user crashes the whole system.
+
+	Workstation user : A user sits at a powerful machien connected to a network of other computer
+	   and servers. The OS has to balance dedicating resources to the local user while also
+	   managing shared network resources.
+
+	Mobile : In smartphones and tablets, the OS is designed for touch input, voice cammands 
+	   and power efficiency. The OS works hard behind the scenes to freeze background apps and 
+	   manage hardware to save battery life.
+
+	Embedded system : Some computers have little to no user view and are designed to run continuously
+	   without user intervention.
+
+	ViewPoint 2 : The SYSTEM view
+   From the system's view there are two main jobs of the OS :
 	
-	-> Mobile operating systems often include not only a core kernel but also middleware, a set of frameworks that provide additional services to application developers.(databses, multimedia,graphics)
+	As a resource allocator : A computer has many resources that programs want to use simultaneously
+	   CPU time, memory space, file storage space and I/O devices. The OS acts as the ultimate manager
+	   It decides how to allocate these resources fairly and efficiently so the computer doesnt freeze.
+	   Facing numerous and possibly conflictin requests for resources, the OS must decide how 	
+	   to allocate them to specific programs and users so that it can operate the computer system
+	   efficiently and fairly.
+
+	As a Control program : The OS controls the execution of user programs. Its primary purpose
+	   in this is to prevent errors and stop improper use of the computer.
+
+DEFINING OPERATING SYSTEMS
+
+	There is no universally accepted definition of an operating system. The most common and accepted definition
+	   used is this :
+   The operating system is the one program running at all times on the computer. This core program
+	which is constantly running is called the kernel. It consists of all the common functions
+	of controlling and allocating resources which are brought together into this one piece of software.
+
+   Along with the kernel there are system programs and application programs.
+
+   And then for mobiles, the number of features constituting the operating system is increasing.
+	Mobile systems often include not only a core kernel but also a middle ware, which is a set
+	of software frameworks that provide additional service to application developers. (databases	
+	multimedia, graphics etc.)
+
+STRUCTURE OF OS
+	OS provides the environment within which programs are executed.
 	
-- Comptuer-system organization
+	OS have ability to multiprogram which is its important aspect.
 	
+	Single users frequently have multiple programs running and multiprogramming increases CPU utilization by organizing jobs so that the CPU always has one to execute.
+
+	The OS keeps several jobs in memory simultaneously. Since main memory is too small to accomomodate all jobs, the jobs are kept initially on the disk in the job pool.
+	This pool consists of al processes reciding on disk awaiting allocation of main memory.
+
+	In a multiprogrammed system when a job is executed and has to wait for some task like I/O, the CPU does not sit idle, it switches to another job till the task of previous job is done. As long as at least one job needs to execute, CPU is never idle.
+
+	Multiprogrammed systems provide an environment in which the various system resources are utilized effectively, but they do not provide for user interaction with the computer system.
+
+	Time sharing or Multi Tasking is a logical extension of multiprogramming. In these systems the CPU executes multiple jobs by switching among them, but the switches occur so frequently that the users can interact with each program while it is running.
 	
+	Time sharing requires an interactive computer system, which provides direct communication betwee the user and system.
+	The user gives instructions to the OS or to the program directly and waits for immediate results on an output device. The response should be short, less than one second.
+
+
+	A time shared OS system allows many users to share the computer simultaneously. 
+	Since each action or command tends to be short, only a little CPU time is needed for each user.
+	Each user is given the impression that the entire system is dedicated to their use.
+
+	A time shared OS system uses CPU scheduling and multiprogramming to provide each user with a small portion of a timeshared computer.
+
+	A program loaded into memory and executing is called a process. When a process executes it executes only for s short time before it either finishes or waits for I/O.
+ 	 The I/O may be interactive and is depended on the users speed, the process may take long to complete. So in  the meantime rather than let the CPU sit idle, the OS will rapidly switch the CPU to another program.
+
+	Time sharing and multiprogramming require that several jobs be kept simultneously in memory.
+	Stuff like job scheduling, memory management, CPU scheduling, disk management etc. are required to run a time shared system.
+
+	In a time sharing system the OS must ensure reasonable response time. This goal is sometimes accomplished through swapping, where processes are swapped in and out of main memory to the disk.
+	 Virtual memory method is also a technique that allows execution of a process that is not completely in memory and its advantge is that it enables users to run programs that are larger than actual physical memory. Further it abstracts main memory into a large uniform array of storage seperating logical memory from physical memory.
+
+OPERATING SYSTEM OPERATIONS
+
+	Modern OS are interrupt driven. If there are no proccesses to execute, no I/O devices to service and no users to respong, an OS will sit quietly waiting for something to happen.
+	Events are almost always signaled by the occurence of an interrupt or a trap.
+	A trap is a software generated interrupt caused by an error or by a specific request from a user program than an OS service be performed.
+	For each type of interrupt seperate segments of code in the OS determien what action should be taken.
+
+	Since the OS and user share the hardware and software resources, we need to make sure that an error in a user program could cause problems only for the one program running. An OS must ensure that an incorrect program cannot cause other progrms to execute incorrectly.
+
+	Dual-Mode and Multimode operation : 
+	
+	In order to ensure the proper execution of the OS, we must be able to distinguish between the execution of OS code and user defined code.
+	Most common approach is to provide hardware support that allows to differentiate among various modes of execution.
+
+	At the very least, we need two seperate modes of operation : user mode and kernel mode.
+	A bit called the mode bit is added to the hardware, 0 for kernel 1 for user. With the mode bit we candistinguish between a task that is executed on behalf of OS and on behalf of user.
+
+	When executing on behalf of user, system is in user mode. When a service from OS is requested, the system must transition from user to kernel mode.
+	At boot, hardware start in kernel mode. OS is then loaded and starts user application in user mode. Whenever a trap or interrupt occurs, the hardware switches from user mode to kernel mode.
+
+	The dual mode of operation provides us with means for protecting the OS from errant users. This is accomplished by designation some of the machine isntructions
+	 that may cause harm as priviliged instructions. Hardware allows priviliged isntructions to only be executed in kernel mode otherwise the hardware does not execute but rather treats it as illegal and traps it to the OS.
+
+	Life cycle of instruction execution : Initial control resides in the OS, where instructions are executed in kernel mode. When control is given to a user application the mode is set to user mode, Eventually control is switched back to the OS via an interrupt, trap or system call.
+
+
