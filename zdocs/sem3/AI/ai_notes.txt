@@ -191,3 +191,68 @@ NATURE OF ENVIRONMENTS
 		
 	   Static vs dynamic
 		If an env can change while agent is delibrating then it is dynamic.
+
+	   Discrete vs Continuous
+
+	   Known vs unknown
+		In a known env the outcomes for outcomes for all actions are given. The env is known to the agent.
+		If unknown agent will have to learn.
+
+STRUCTURE OF AGENTS
+   The job of I is to design agent program that implements agent function. This program will run on some sort of computing device with physical sensors and actuators, called the agent architecure
+	agent = architecture + program
+
+   The program we choose has to be approrpriate for the architecture. 
+
+   SIMPLE REFLEX AGENTS
+	Simplest kind of agent. These select ations on the basis of the current percept, ignoring the rest of the percept history. Percept sequence is smaller.
+	
+	Condition-action rule : Some visual or other input triggers some established connection in the agent to take an action.
+	   If A then B.
+
+	A general and flexible approach is first to build a general-purpose interpreter for condition-action rules and then to create rule sets for specific task environments.
+
+	A simple refle agent will only work if the correct decision can be made on the basis of just the current percept; only if the environment is fully observable.
+
+	   In partially observable environments infinite loops are often unavoidable. Escaping from these is possible if the agent can randomize its actions.
+	   A randomized simple reflex agent might outperform a deterministic one.
+
+   MODEL BASED REFLEX AGENT
+	Most effective way to handle partial observability is for the agent to keep track of the part of the world it can't see now.
+	   Agent should maintain some sort of internal state that depends on the percept history and thereby reflects atleast some of the unobserved aspects of the current state.
+
+	Updating this internal state information as time goes by requires two kinds of knowledge to be encoded in the agent program in some form.
+	   First information about hwo the world changes over time, which can be divided into two parts
+		The effects of the agent's actions and how the world evolve indepedently of the agent.
+	   	This is called a transition model where this knowledge about how the world works is implemented.
+
+	   Second information about how the state of the world is reflected in the agent's percepts.
+		This kind of knowledge is called a sensor model.
+
+	Together the transition and sensor model allow an agent to keep track of the state of the world to the extent possible given the limits of agent's sensore.
+	An agent that uses such models is called a model-based agent.
+
+   GOAL BASED AGENTS
+	In order to make the correct decisions, the agents not only needs a current state description but also a goal that describes the situations that are desirable.
+
+   UTILITY BASED AGENTS
+	Goals alone are not enough to generate high quality behaviour in most environments.They just provide a crude binary distinction between happy and unhappy states.
+	
+	A more general performane measure should allow a comparison of different world states acc to exactly how happy they wiuld make the agent.
+	Instead of calling it happy we call it the term utility.
+
+	A performance measure assigns a score to any given sequence of environment states, so it can also easily distinguish between more and less desirable ways of action.
+	An agent's utility function is an internalization of the performance measure.
+	
+	Provided that the internal utility function and external performance measure are in agreement, an agent that chooses actions to maximize its utility will be rational according to external performance measure.
+
+   LEARNING AGENTS
+	Instead of programming a complte agent program by hand we can build learning machines and then teach them.
+	Learning has more advantages like it allows the agent to operate in unknown environments and become more competent than its initial knowledge alone migth allow.
+
+	Four components :
+	
+	   Learning Element - Responsible for making improvements
+	   Performane element - Responsible for selecting external actions.
+	   Critic - Gives feedback to the learning element on how the agent is doing and determines how the performance element should be modified to do better in future.
+	   Problem generator - Responsible for suggesting actions that will lead to new and informative experiences.
