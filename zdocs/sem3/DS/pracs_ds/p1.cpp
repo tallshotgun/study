@@ -1,177 +1,183 @@
 #include <iostream>
-
 using namespace std;
 
-// Node structure for the Singly Linked List
+template <typename T>   // Node structure for the Singly Linked List
 struct Node {
-    int data;
-    Node* next;
-    
-    // Constructor to initialize a new node
-    Node(int val) : data(val), next(nullptr) {}
+    T data;
+    Node<T>* next;
+    Node(const T& val) : data(val), next(nullptr) {}
 };
 
-// Singly Linked List Class
+template <typename T>
 class SinglyLinkedList {
 private:
-    Node* head;
-
+    Node<T>* head;
+    int size;
 public:
-    // Constructor
-    SinglyLinkedList() {
-        head = nullptr;
+    SinglyLinkedList() : head(nullptr), size(0) {}    
+    ~SinglyLinkedList() {   // Destructor to free dynamically allocated memory
+        T temp;
+        while (!isEmpty()) {
+            removeFromBeginning(temp);
+        }
     }
-
-    // i. Insert an element x at the beginning of the singly linked list
-    void insertAtBeginning(int x) {
-        Node* newNode = new Node(x);
+    bool isEmpty() const {
+        return head == nullptr;
+    }
+    int getSize() const {
+        return size;
+    }    
+    void insertAtBeginning(const T& x) {    // i. Insert an element x at the beginning of the singly linked list
+        Node<T>* newNode = new Node<T>(x);
         newNode->next = head;
         head = newNode;
-        cout << x << " inserted at the beginning." << endl;
-    }
-
-    // ii. Insert an element x at the i-th position (0-indexed)
-    void insertAtPosition(int x, int i) {
-        if (i < 0) {
-            cout << "Invalid position!" << endl;
-            return;
+        size++;
+    }    
+    bool insertAtPosition(const T& x, int pos) {    // ii. Insert an element x at the i-th position (1-based indexing)
+        if (pos < 1 || pos > size + 1) {
+            return false; // Invalid position
         }
-        if (i == 0) {
+        if (pos == 1) {
             insertAtBeginning(x);
-            return;
+            return true;
         }
-
-        Node* newNode = new Node(x);
-        Node* current = head;
-        
-        for (int count = 0; count < i - 1 && current != nullptr; ++count) {
-            current = current->next;
+        Node<T>* curr = head;
+        for (int i = 1; i < pos - 1; ++i) {
+            curr = curr->next;
         }
-
-        // If current is null, the position is greater than the list size
-        if (current == nullptr) {
-            cout << "Position out of bounds!" << endl;
-            delete newNode;
-            return;
+        Node<T>* newNode = new Node<T>(x);
+        newNode->next = curr->next;
+        curr->next = newNode;
+        size++;
+        return true;
+    }    
+    bool removeFromBeginning(T& removedVal) {   // iii. Remove an element from the beginning of the singly linked list
+        if (isEmpty()) {
+            return false;
         }
-
-        newNode->next = current->next;
-        current->next = newNode;
-        cout << x << " inserted at position " << i << "." << endl;
-    }
-
-    // iii. Remove an element from the beginning of the singly linked list
-    void removeFromBeginning() {
-        if (head == nullptr) {
-            cout << "List is already empty!" << endl;
-            return;
-        }
-        Node* temp = head;
+        Node<T>* oldHead = head;
+        removedVal = oldHead->data;
         head = head->next;
-        cout << temp->data << " removed from the beginning." << endl;
-        delete temp;
-    }
-
-    // iv. Remove an element from the i-th position (0-indexed)
-    void removeFromPosition(int i) {
-        if (i < 0 || head == nullptr) {
-            cout << "Invalid position or list is empty!" << endl;
-            return;
+        delete oldHead;
+        size--;
+        return true;
+    }    
+    bool removeFromPosition(int pos, T& removedVal) {   // iv. Remove an element from the i-th position (1-based indexing)
+        if (isEmpty() || pos < 1 || pos > size) {
+            return false; // Empty list or invalid position
         }
-        if (i == 0) {
-            removeFromBeginning();
-            return;
+        if (pos == 1) {
+            return removeFromBeginning(removedVal);
         }
-
-        Node* current = head;
-        
-        // Traverse to the (i-1)th node
-        for (int count = 0; count < i - 1 && current->next != nullptr; ++count) {
-            current = current->next;
+        Node<T>* curr = head;
+        for (int i = 1; i < pos - 1; ++i) {
+            curr = curr->next;
         }
-
-        // If the i-th node doesn't exist
-        if (current->next == nullptr) {
-            cout << "Position out of bounds!" << endl;
-            return;
-        }
-
-        Node* nodeToDelete = current->next;
-        current->next = nodeToDelete->next;
-        cout << nodeToDelete->data << " removed from position " << i << "." << endl;
-        delete nodeToDelete;
-    }
-
-    // vi. Search for an element x and return its pointer
-    Node* search(int x) {
-        Node* current = head;
-        int index = 0;
-        
-        while (current != nullptr) {
-            if (current->data == x) {
-                cout << "Element " << x << " found at position " << index << ". Pointer: " << current << endl;
-                return current;
+        Node<T>* target = curr->next;
+        removedVal = target->data;
+        curr->next = target->next;
+        delete target;
+        size--;
+        return true;
+    }    
+    Node<T>* search(const T& x) const {     // v. Search for an element x in the singly linked list and return its pointer
+        Node<T>* curr = head;
+        while (curr != nullptr) {
+            if (curr->data == x) {
+                return curr;
             }
-            current = current->next;
-            index++;
+            curr = curr->next;
         }
-        
-        cout << "Element " << x << " not found in the list." << endl;
         return nullptr;
-    }
-
-    // Utility function to print the current state of the list
-    void display() {
-        if (head == nullptr) {
-            cout << "List is empty." << endl;
+    }    
+    void display() const {      // Display all elements in the list
+        if (isEmpty()) {
+            cout << "List is empty.\n";
             return;
         }
-        
-        Node* current = head;
-        cout << "List: ";
-        while (current != nullptr) {
-            cout << current->data << " -> ";
-            current = current->next;
+        Node<T>* curr = head;
+        cout << "Singly Linked List: ";
+        while (curr != nullptr) {
+            cout << curr->data << " -> ";
+            curr = curr->next;
         }
-        cout << "NULL" << endl;
-    }
-
-    // Destructor to free dynamically allocated memory
-    ~SinglyLinkedList() {
-        Node* current = head;
-        while (current != nullptr) {
-            Node* nextNode = current->next;
-            delete current;
-            current = nextNode;
-        }
+        cout << "NULL\n";
     }
 };
-
 int main() {
-    SinglyLinkedList list;
+    SinglyLinkedList<int> sll;
+    int choice, value, pos, removedVal;
+    do {
+        cout << "\n--- Singly Linked List ADT Menu ---\n";
+        cout << "1. Insert an element x at the beginning\n";
+        cout << "2. Insert an element x at i-th position\n";
+        cout << "3. Remove an element from the beginning\n";
+        cout << "4. Remove an element from i-th position\n";
+        cout << "5. Search for an element x\n";
+        cout << "6. Display list\n";
+        cout << "0. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "Enter element to insert at beginning: ";
+                cin >> value;
+                sll.insertAtBeginning(value);
+                cout << value << " inserted at the beginning.\n";
+                break;
+            case 2:
+                cout << "Enter element to insert: ";
+                cin >> value;
+                cout << "Enter position (1 to " << sll.getSize() + 1 << "): ";
+                cin >> pos;
+                if (sll.insertAtPosition(value, pos)) {
+                    cout << value << " inserted at position " << pos << ".\n";
+                } else {
+                    cout << "Invalid position.\n";
+                }
+                break;
+            case 3:
+                if (sll.removeFromBeginning(removedVal)) {
+                    cout << "Removed element from beginning: " << removedVal << "\n";
+                } else {
+                    cout << "Underflow: List is empty.\n";
+                }
+                break;
+            case 4:
+                if (sll.isEmpty()) {
+                    cout << "Underflow: List is empty.\n";
+                    break;
+                }
+                cout << "Enter position to remove (1 to " << sll.getSize() << "): ";
+                cin >> pos;
+                if (sll.removeFromPosition(pos, removedVal)) {
+                    cout << "Removed element " << removedVal << " from position " << pos << ".\n";
+                } else {
+                    cout << "Invalid position.\n";
+                }
+                break;
+            case 5: {
+                cout << "Enter element to search: ";
+                cin >> value;
+                Node<int>* result = sll.search(value);
+                if (result != nullptr) {
+                    cout << "Element " << result->data
+                         << " found at pointer address: " << result << "\n";
+                } else {
+                    cout << "Element " << value << " not found (returned nullptr).\n";
+                }
+                break;
+            }
+            case 6:
+                sll.display();
+                break;
+            case 0:
+                cout << "Exiting...\n";
+                break;
 
-    // i. Insert at beginning
-    list.insertAtBeginning(10);
-    list.insertAtBeginning(20);
-    list.insertAtBeginning(30);
-    list.display();
-
-    // ii. Insert at i-th position
-    list.insertAtPosition(15, 2); 
-    list.insertAtPosition(5, 0);  
-    list.display();
-
-    // vi. Search for an element
-    list.search(15);
-    list.search(100);
-
-    // iv. Remove from i-th position
-    list.removeFromPosition(3);
-    list.display();
-
-    // iii. Remove from beginning
-    list.removeFromBeginning();
-    list.display();
-
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 0);
     return 0;
 }

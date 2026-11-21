@@ -1,4 +1,4 @@
-Field of Artificial Intelligence or AI, is concerned with not just understanding but also building intelligent entities; machines that can computer how to act effectively and safely in a wide variety of novel situations.
+Field of Artificial Intelligence or AI, is concerned with not just understanding but also building intelligent entities; machines that can compute how to act effectively and safely in a wide variety of novel situations.
 
 General subfields of AI : learning, reasoning, perception ... AND Specific subfields : chess, maths, architecture, poetry ...
 
@@ -8,7 +8,7 @@ Researchers pursue several different versions of AI.
 	Others prefer an abstract, formal definition : RATIONALITY - does the system achieve optimal, logically correct outcomes
 
    Thought v/s Behaviour
-	Some consider intelligeence to be a property of INTERNAL THOUGHT PROCESS and REASONING
+	Some consider intelligence to be a property of INTERNAL THOUGHT PROCESS and REASONING
 	Others focus on intelligent BEHAVIOUR; an external characterization
 
 Pursuit of human-like intelligence must be somewhat related to psychology, involving observations and hypotheses about actual human behaviour and thought process 
@@ -16,11 +16,10 @@ A rationalist approach involvees a combination of mathematics and engineering, a
 
 ACTING HUMANLY : The turing test approach
 
-Turing test proposed by Alan Turing was designeed as a thought experiment that would sidestep the philosophical vagueness of the question "Can a machine think?". A computer passed the test if a human interrogator, after posing some 
-written question, cannot tell whether the responses come from a person or a computer.
+Turing test proposed by Alan Turing was designed as a thought experiment that would sidestep the philosophical vagueness of the question "Can a machine think?". A computer passed the test if a human interrogator, after posing some written question, cannot tell whether the responses come from a person or a computer.
 
 The computer would need the following capabilities : 
-	natural language processing 		to communicate succesgully in a human language
+	natural language processing 		to communicate successfully in a human language
 	knowledge representation		to store what it knows or hears
 	automated reasoning			to answer question and to draw new conclusion
 	machine learning			to adapt to new circumstances and to detect and extrapolate patterns
@@ -37,18 +36,16 @@ To say that a program thinks like a human, we must know how humans think :
 	psychological experiments	observing a person in action
 	brain imaging			observing the brain in action
 
-Once we have a sufficiently precise theory of mind, it becomes possible to express the theory as a computer program. If program's I/O matches corresponding human behaviour, that is evidence that some of the programs's mechanisms
-could also be operating in humans.
+Once we have a sufficiently precise theory of mind, it becomes possible to express the theory as a computer program. If program's I/O matches corresponding human behaviour, that is evidence that some of the programs's mechanisms could also be operating in humans.
 
 Not content merely to have their program solve problemsn correctly, but more concrene with comparing the sequence and timing of its reasoning steps to thos of human subject solving the same problems.
 
 
 THINKING RATIONALLY : The laws of thought approach
 
-Aristotle's syllogisms provided patterns for argument structures that always yielded correct conclusions when given correct premises. These laws of thought were supposed to govern the operation of the mid; their study initiated the 
-field called LOGIC.
+Aristotle's syllogisms provided patterns for argument structures that always yielded correct conclusions when given correct premises. These laws of thought were supposed to govern the operation of the mind; their study initiated the  field called LOGIC.
 
-Logicians developed a precise notation for statements about bjects in the world and the relations amongst them. The logicist tradition in AI hopes to build on such programs to create intelligent systems.
+Logicians developed a precise notation for statements about objects in the world and the relations amongst them. The logicist tradition in AI hopes to build on such programs to create intelligent systems.
 
 Logic as conventionally understood requires knowledge of the world that is CERTAIN; a condition that in reality is seldom achieved. The THEORY OF PROBABILITY fills this gap, allowing rigorous reasoning with uncertian information.
 	It allows the construction of a comprehensive model of rational thought, leading from raw perceptual information to an understanding of how the world works to predictions of the future.

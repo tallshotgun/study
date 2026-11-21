@@ -1,148 +1,158 @@
 #include <iostream>
-
 using namespace std;
 
-// Node structure for the Doubly Linked List
+template <typename T>
 struct Node {
-    int data;
-    Node* prev;
-    Node* next;
-    
-    // Constructor to initialize a new node
-    Node(int val) : data(val), prev(nullptr), next(nullptr) {}
+    T data;
+    Node<T>* prev;
+    Node<T>* next;
+
+    Node(const T& val) : data(val), prev(nullptr), next(nullptr) {}
 };
 
-// Doubly Linked List Class
+template <typename T>   // Doubly Linked List ADT
 class DoublyLinkedList {
 private:
-    Node* head;
-    Node* tail; // Maintaining a tail pointer makes end operations O(1)
-
+    Node<T>* head;
+    Node<T>* tail;
 public:
-    // Constructor
-    DoublyLinkedList() {
-        head = nullptr;
-        tail = nullptr;
+    DoublyLinkedList() : head(nullptr), tail(nullptr) {}    
+    ~DoublyLinkedList() {
+        T temp;
+        while (!isEmpty()) {
+            removeFromBeginning(temp);
+        }
     }
-
-    // i. Insert an element x at the beginning
-    void insertAtBeginning(int x) {
-        Node* newNode = new Node(x);
-        
-        if (head == nullptr) {
-            // If the list is empty, the new node is both head and tail
+    bool isEmpty() const {
+        return head == nullptr;
+    }    
+    void insertAtBeginning(const T& x) {    // i. Insert an element x at the beginning of the doubly linked list
+        Node<T>* newNode = new Node<T>(x);
+        if (isEmpty()) {
             head = tail = newNode;
         } else {
             newNode->next = head;
             head->prev = newNode;
             head = newNode;
         }
-        cout << x << " inserted at the beginning." << endl;
-    }
-
-    // ii. Insert an element x at the end
-    void insertAtEnd(int x) {
-        Node* newNode = new Node(x);
-        
-        if (tail == nullptr) {
-            // If the list is empty, the new node is both head and tail
+    }    
+    void insertAtEnd(const T& x) {  // ii. Insert an element x at the end of the doubly linked list
+        Node<T>* newNode = new Node<T>(x);
+        if (isEmpty()) {
             head = tail = newNode;
         } else {
-            tail->next = newNode;
             newNode->prev = tail;
+            tail->next = newNode;
             tail = newNode;
         }
-        cout << x << " inserted at the end." << endl;
-    }
-
-    // iii. Remove an element from the beginning
-    void removeFromBeginning() {
-        if (head == nullptr) {
-            cout << "List is empty! Cannot remove from the beginning." << endl;
-            return;
+    }    
+    bool removeFromBeginning(T& removedVal) {   // iii. Remove an element from the beginning of the doubly linked list
+        if (isEmpty()) {
+            return false;
         }
-        
-        Node* temp = head;
+        Node<T>* oldHead = head;
+        removedVal = oldHead->data;
         if (head == tail) {
-            // Only one node in the list
             head = tail = nullptr;
         } else {
             head = head->next;
             head->prev = nullptr;
         }
-        
-        cout << temp->data << " removed from the beginning." << endl;
-        delete temp;
-    }
-
-    // iv. Remove an element from the end
-    void removeFromEnd() {
-        if (tail == nullptr) {
-            cout << "List is empty! Cannot remove from the end." << endl;
-            return;
+        delete oldHead;
+        return true;
+    }    
+    bool removeFromEnd(T& removedVal) {     // iv. Remove an element from the end of the doubly linked list
+        if (isEmpty()) {
+            return false;
         }
-        
-        Node* temp = tail;
-        if (head == tail) {
-            // Only one node in the list
+        Node<T>* oldTail = tail;
+        removedVal = oldTail->data;
+        if (head == tail) {            
             head = tail = nullptr;
         } else {
             tail = tail->prev;
             tail->next = nullptr;
         }
-        
-        cout << temp->data << " removed from the end." << endl;
-        delete temp;
+        delete oldTail;
+        return true;
     }
-
-    // Utility function to print the list forward
-    void displayForward() {
-        if (head == nullptr) {
-            cout << "List is empty." << endl;
+    void displayForward() const {
+        if (isEmpty()) {
+            cout << "List is empty.\n";
             return;
         }
-        
-        Node* current = head;
-        cout << "Forward: NULL <- ";
-        while (current != nullptr) {
-            cout << current->data;
-            if (current->next != nullptr) cout << " <-> ";
-            current = current->next;
+        Node<T>* curr = head;
+        cout << "Forward:  NULL <-> ";
+        while (curr != nullptr) {
+            cout << curr->data << " <-> ";
+            curr = curr->next;
         }
-        cout << " -> NULL" << endl;
-    }
-
-    // Destructor to free dynamically allocated memory
-    ~DoublyLinkedList() {
-        Node* current = head;
-        while (current != nullptr) {
-            Node* nextNode = current->next;
-            delete current;
-            current = nextNode;
+        cout << "NULL\n";
+    }  
+    void displayBackward() const {
+        if (isEmpty()) {
+            cout << "List is empty.\n";
+            return;
         }
+        Node<T>* curr = tail;
+        cout << "Backward: NULL <-> ";
+        while (curr != nullptr) {
+            cout << curr->data << " <-> ";
+            curr = curr->prev;
+        }
+        cout << "NULL\n";
     }
 };
-
 int main() {
-    DoublyLinkedList dll;
-
-    // i. Insert at the beginning
-    dll.insertAtBeginning(20);
-    dll.insertAtBeginning(10);
-    dll.displayForward();
-
-    // ii. Insert at the end
-    dll.insertAtEnd(30);
-    dll.insertAtEnd(40);
-    dll.displayForward();
-
-    // iii. Remove from the beginning
-    dll.removeFromBeginning();
-    dll.displayForward();
-
-    // iv. Remove from the end
-    dll.removeFromEnd();
-    dll.displayForward();
-
+    DoublyLinkedList<int> dll;
+    int choice, value, removedVal;
+    do {
+        cout << "\n--- Doubly Linked List ADT Menu ---\n";
+        cout << "1. Insert an element x at the beginning\n";
+        cout << "2. Insert an element x at the end\n";
+        cout << "3. Remove an element from the beginning\n";
+        cout << "4. Remove an element from the end\n";
+        cout << "5. Display list (forward & backward)\n";
+        cout << "0. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "Enter element to insert at beginning: ";
+                cin >> value;
+                dll.insertAtBeginning(value);
+                cout << value << " inserted at the beginning.\n";
+                break;
+            case 2:
+                cout << "Enter element to insert at end: ";
+                cin >> value;
+                dll.insertAtEnd(value);
+                cout << value << " inserted at the end.\n";
+                break;
+            case 3:
+                if (dll.removeFromBeginning(removedVal)) {
+                    cout << "Removed element from beginning: " << removedVal << "\n";
+                } else {
+                    cout << "Underflow: List is empty.\n";
+                }
+                break;
+            case 4:
+                if (dll.removeFromEnd(removedVal)) {
+                    cout << "Removed element from end: " << removedVal << "\n";
+                } else {
+                    cout << "Underflow: List is empty.\n";
+                }
+                break;
+            case 5:
+                dll.displayForward();
+                dll.displayBackward();
+                break;
+            case 0:
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 0);
     return 0;
 }
